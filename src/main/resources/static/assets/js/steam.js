@@ -10,6 +10,7 @@ function doStuff() {
        $('.steamImageHolder').css("display", 'none');
        var value = $(this).val();
        $('.steamImageHolder:containsIN("' + value + '")').css("display", 'inline-block');
+       $('.selected').parent().css("display", 'inline-block');
        if (value === "") {
            $('.steamImageHolder').css("display", 'inline-block');
        }
