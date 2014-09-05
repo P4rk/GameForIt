@@ -1,5 +1,6 @@
 <@page>
     <div class="container">
+        <div id="steam-id" <#if steamid??>data-steam-id="${steamid}"</#if>></div>
         <form id="steam-name">
         <input id="" class="show" type="text" name="id"/>
         </form>

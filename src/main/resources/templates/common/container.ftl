@@ -8,12 +8,11 @@
         <script src=${assets.js("steam.js")} type="text/javascript"></script>
         
     </head>
-    <body>
+    <body data-base-url="${assets.getAbsolute('/')}">
         <div id="wrapper">
             <div class="main">
                 <#nested>
             </div>
-            <#include "scripts.ftl">
         </div>
     </body>
 </html>

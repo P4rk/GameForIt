@@ -17,7 +17,8 @@ import com.lukecorpe.gameforit.SteamUser;
 public class HomeController {
 
     @RequestMapping("/")
-    public ModelAndView home(ModelAndView mav){
+    public ModelAndView home(ModelAndView mav, @RequestParam(required=false) String steamid){
+        mav.addObject("steamid", steamid);
         mav.setViewName("home");
         return mav;
     }
@@ -30,9 +31,10 @@ public class HomeController {
              friends = user.get().getFriends();
              mav.addObject("user", user.get());
              mav.addObject("friends", friends);
+             mav.setViewName("user");
+             return mav;
         }
-        mav.setViewName("user");
-        return mav;
+        return null;
     }
     
     @RequestMapping("/games")

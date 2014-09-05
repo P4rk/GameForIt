@@ -1,3 +1,13 @@
+function loadUser(vurl) {
+   $("#games").empty();
+   $("#user").empty();
+   var s = $('body').data('base-url')+"/getSteamId?vanityUrl="+vurl;
+   $("#user").load(s, function () {
+       $("#steam-user").fadeIn("slow");
+   });
+   return false;
+}
+
 function doStuff() {
     $.extend($.expr[":"], {
         "containsIN": function(elem, i, match, array) {
@@ -31,9 +41,30 @@ function doStuff() {
         checkBoxes.prop('checked', !checkBoxes.prop('checked'));
         $('#' + steamId + '_image').toggleClass('selected');
    });});
+   
+   
+   
+   
+   
+   $('#steam-friends').submit(function () {
+       var ids="";
+       for (var i = 0; i < $( "input:checked" ).length; i++) {
+           ids += "ids="+$($( "input:checked" )[i]).attr("id")+"&";
+       }
+       var s = $('body').data('base-url')+"/games?ids="+$("#my-steam-id").val()+ids;
+       $("#steam-user").fadeOut();
+       $("#games").load(s, function () {
+           $("#steam-games").fadeIn("slow");
+       });
+       return false;
+   });
 }
 
 $(function() {
+    if($('#steam-id').data('steam-id')!=""){
+        loadUser($('#steam-id').data('steam-id'));
+    }
+    $('#steam-name').submit(loadUser($('#steam-name input').val()));
     $(document).ready(doStuff);
     $(document).ajaxComplete(doStuff);
 });
