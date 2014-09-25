@@ -1,7 +1,7 @@
 function loadUser(vurl) {
    $("#games").empty();
    $("#user").empty();
-   var s = $('body').data('base-url')+"/getSteamId?vanityUrl="+vurl;
+   var s = $('body').data('base-url')+"/getSteamUser?vanityUrl="+vurl;
    $("#user").load(s, function () {
        $("#steam-user").fadeIn("slow");
    });
@@ -26,13 +26,13 @@ function doStuff() {
        }
    });
 
-   $('.steamImageHolder').hover(function() {
-       var steamId = $(this).data('steam-id');
-       $('#' + steamId + '_overlay').css('display', 'block');
-   }, function() {
-       var steamId = $(this).data('steam-id');
-       $('#' + steamId + '_overlay').css('display', 'none');
-   });
+//   $('.steamImageHolder').hover(function() {
+//       var steamId = $(this).data('steam-id');
+//       $('#' + steamId + '_overlay').css('display', 'block');
+//   }, function() {
+//       var steamId = $(this).data('steam-id');
+//       $('#' + steamId + '_overlay').css('display', 'none');
+//   });
 
    $('.steamImageHolder').each(function(index){
         $(this).on('click',function() {
@@ -58,6 +58,16 @@ function doStuff() {
        });
        return false;
    });
+   
+   $('.img-zoom').hover(function() {
+       $(this).addClass('transition');
+
+       }, function() {
+           $(this).removeClass('transition');
+    });
+
+   $(".steamUserImage").tooltip();
+   $(".steamUserImage").tooltip( "option", "position", { my: "bottom center", at:  "center bottom" } );
 }
 
 $(function() {
