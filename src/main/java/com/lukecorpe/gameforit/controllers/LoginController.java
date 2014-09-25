@@ -25,6 +25,7 @@ import org.openid4java.message.ParameterList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lukecorpe.gameforit.AssertLocator;
 import com.lukecorpe.gameforit.SteamConstants;
@@ -52,6 +53,12 @@ public class LoginController {
             discovered = null;
         }
     }
+    
+    @RequestMapping("/")
+    public ModelAndView loginpage(ModelAndView mav){
+        mav.setViewName("login");
+        return mav;
+    }
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response){
@@ -67,7 +74,7 @@ public class LoginController {
     @RequestMapping("/auth")
     public String auth(HttpServletRequest request, HttpServletResponse response){
         String steamid = verify(assertLocator.getAbsolute(request.getContextPath()).toString(), request.getParameterMap());
-        return "redirect:/?steamid="+steamid.replaceFirst("http://steamcommunity.com/openid/id/", "");
+        return "redirect:/home?steamid="+steamid.replaceFirst("http://steamcommunity.com/openid/id/", "");
     }
 
     public String login(String callbackUrl) {
