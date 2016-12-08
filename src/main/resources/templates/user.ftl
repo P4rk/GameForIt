@@ -1,20 +1,32 @@
 <div>
-    <div class="row">
+    <div class="row ">
         <div class="col-md-4">
-            <img src=${user.avatarfull} /> 
-            <h3>${user.personaname}<h3>
+            <div class="margin-side">
+                <img src=${user.avatarfull} /> 
+                <h3>${user.personaname}<h3>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="col-md-8" id="selected-friends">
             </div>
-            <div class="col-md-8">
-                <input id="find-games" type="submit" value="Find Games" name="Find Games"/>
-            </div>
+            
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
-            Find Friend: <input id="textBoxID" />
+        <div class="col-md-6">
+            <div class="margin-side">
+                <div class="input-group">
+                    <span class="input-group-addon">Find Friend: </span>
+                    <input id="textBoxID" type="text" class="form-control" placeholder="Friend Name">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-md-offset-4">
+            <div class="margin-side">
+                <button id="find-games"  name="Find Games" type="submit" class="btn btn-default dropdown-toggle">
+                    Find Games
+                </button>
+            </div>
         </div>
     </div>
     <div class="row">

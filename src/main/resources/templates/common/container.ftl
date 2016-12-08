@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href=${assets.css("jquery-ui.min.css")} >
         <link rel="stylesheet" type="text/css" href=${assets.css("bootstrap.min.css")} >
-        <link rel="stylesheet" type="text/css" href=${assets.css("main.less")} >
+        <link rel="stylesheet/less" type="text/css" href=${assets.css("main.less")} >
         <script  type="text/javascript" src=${assets.js("jquery-1.9.0.min.js")}></script>
         <script  type="text/javascript" src=${assets.js("bootstrap.min.js")}></script>
         <script src=${assets.js("less-1.7.0.min.js")} type="text/javascript"></script>
@@ -25,13 +25,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${assets.getAbsolute('/')}">Login</a></li>
+            <li <#if !steamid??> class="active"</#if>><a href="${assets.getAbsolute('/')}">Login</a></li>
             <#if steamid??><li class="active"><a href="${assets.getAbsolute('/home')}?steamid=${steamid}">Friends</a></li></#if>
           </ul>
         </div>
       </div>
     </div>
         <#nested>
+        <#include "*/ga.ftl" />
     </body>
 </html>
 </#macro>
